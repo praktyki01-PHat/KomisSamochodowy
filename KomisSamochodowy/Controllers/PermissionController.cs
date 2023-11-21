@@ -26,21 +26,21 @@ namespace KomisSamochodowy.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddRole()
-        {
-            await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
-            _context.SaveChanges();
-            return View();
-        }
+        //public async Task<IActionResult> AddRole()
+        //{
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+        //    _context.SaveChanges();
+        //    return View();
+        //}
 
-        public async Task<IActionResult> AssignRole(string email, string role)
-        {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (!await _userManager.IsInRoleAsync(user, role))
-            {
-                await _userManager.AddToRoleAsync(user, role);
-            }
-            return View();
-        }
+        //public async Task<IActionResult> AssignRole(string email, string role)
+        //{
+        //    var user = await _userManager.FindByEmailAsync(email);
+        //    if (!await _userManager.IsInRoleAsync(user, role))
+        //    {
+        //        await _userManager.AddToRoleAsync(user, role);
+        //    }
+        //    return View();
+        //}
     }
 }

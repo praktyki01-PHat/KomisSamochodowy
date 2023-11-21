@@ -1,0 +1,93 @@
+﻿@model IEnumerable<KomisSamochodowy.Models.Samochod>
+
+@{
+    ViewData["Title"] = "Auta droższe niż 50000";
+}
+
+<h1>Auta droższe niż 50000</h1>
+
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    }
+    <a asp-action="IndexTanszeNiz10000" class="btn btn-outline-primary">Auta tańsze niż 10000</a>
+    <a asp-action="IndexPomiedzy10001_50000" class="btn btn-outline-primary">Auta z ceną pomiędzy 10001 a 50000</a>
+    <a asp-action="Index" class="btn btn-outline-primary">Bez filtrów</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kolor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PojemnoscSilnika)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Przebieg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumerVIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marka)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RodzajNadwozia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RodzajPaliwa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kolor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PojemnoscSilnika)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Przebieg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumerVIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marka.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RodzajNadwozia.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RodzajPaliwa.Nazwa)
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

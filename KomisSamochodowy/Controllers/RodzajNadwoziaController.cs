@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KomisSamochodowy.Data;
 using KomisSamochodowy.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KomisSamochodowy.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RodzajNadwoziaController : Controller
     {
         private readonly ApplicationDbContext _context;
